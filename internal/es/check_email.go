@@ -33,7 +33,7 @@ func (es *ES) CheckEmailExists(email string) (rsp *model.CheckEmailResponse, err
 		return nil, err
 	}
 
-	fmt.Printf("%+v", searchResult)
+	fmt.Printf("SearchResult: %+v", searchResult)
 
 	fmt.Println()
 
@@ -41,7 +41,7 @@ func (es *ES) CheckEmailExists(email string) (rsp *model.CheckEmailResponse, err
 
 	if searchResult.TotalHits() > 0 {
 		for _, hit := range searchResult.Hits.Hits {
-			fmt.Printf("%+v", hit)
+			fmt.Printf("Hit: %+v", hit)
 			var s model.Superhero
 
 			err := json.Unmarshal(hit.Source, &s)
@@ -50,7 +50,7 @@ func (es *ES) CheckEmailExists(email string) (rsp *model.CheckEmailResponse, err
 			}
 
 			fmt.Println()
-			fmt.Printf("%+v", &s)
+			fmt.Printf("Superhero Unmarshalled: %+v", &s)
 			fmt.Println()
 
 			isRegistered := false
@@ -63,6 +63,7 @@ func (es *ES) CheckEmailExists(email string) (rsp *model.CheckEmailResponse, err
 				IsRegistered: isRegistered,
 				IsDeleted:    s.IsDeleted,
 				IsBlocked:    s.IsBlocked,
+				Superhero:    &s,
 			}
 		}
 	}
