@@ -5,5 +5,5 @@ type CheckEmailResponse struct {
 	IsRegistered bool      `json:"isRegistered"`
 	IsDeleted    bool      `json:"isDeleted"`
 	IsBlocked    bool      `json:"isBlocked"`
-	Superhero    *Superhero `json:"superhero"`
+	Superhero    Superhero `json:"superhero"`
 }

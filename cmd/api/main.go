@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/superheroville-municipality/cmd/api/controller"
-	"github.com/superheroville-municipality/internal/config"
+	"github.com/superhero-screen/cmd/api/controller"
+	"github.com/superhero-screen/internal/config"
 )
 
 func main() {
@@ -26,8 +26,4 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-
-	defer func() {
-		_ = ctrl.Producer.Close()
-	}()
 }

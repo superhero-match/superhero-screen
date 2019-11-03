@@ -27,29 +27,24 @@ func(es *ES) CreateIndex() error {
 			"mappings":{
 				"properties":{
 					"superhero_id":{
-						"type":"text",
-						"store": true,
-						"fielddata": true
+						"type":"keyword",
+						"store": true
 					},
 					"email":{
-						"type":"text",
-						"store": true,
-						"fielddata": true
+						"type":"keyword",
+						"store": true
 					},
 					"name":{
-						"type":"text",
-						"store": true,
-						"fielddata": true
+						"type":"keyword",
+						"store": true
 					},
 					"superhero_name":{
-						"type":"text",
-						"store": true,
-						"fielddata": true
+						"type":"keyword",
+						"store": true
 					}, 
 					"main_profile_pic_url":{
-						"type":"text",
-						"store": true,
-						"fielddata": true
+						"type":"keyword",
+						"store": true
 					},
 					"gender":{
 						"type":"integer"
@@ -70,63 +65,48 @@ func(es *ES) CreateIndex() error {
 						"type":"integer"
 					},
 					"distance_unit":{
-						"type":"text",
-						"store": true,
-						"fielddata": true
+						"type":"keyword",
+						"store": true
 					},
 					"location":{
 						"type":"geo_point"
 					},
 					"birthday":{
-						"type":"text",
-						"store": true,
-						"fielddata": true
+						"type":"date"
 					},
 					"country":{
-						"type":"text",
-						"store": true,
-						"fielddata": true
+						"type":"keyword",
+						"store": true
 					},
 					"city":{
-						"type":"text",
-						"store": true,
-						"fielddata": true
+						"type":"keyword",
+						"store": true
 					},
 					"superpower":{
-						"type":"text",
-						"store": true,
-						"fielddata": true
+						"type":"keyword",
+						"store": true
 					},
 					"account_type":{
-						"type":"text",
-						"store": true,
-						"fielddata": true
+						"type":"keyword",
+						"store": true
 					},
 					"is_deleted":{
 						"type":"boolean"
 					},
 					"deleted_at":{
-						"type":"text",
-						"store": true,
-						"fielddata": true
+						"type":"date"
 					},
 					"is_blocked":{
 						"type":"boolean"
 					},
 					"blocked_at":{
-						"type":"text",
-						"store": true,
-						"fielddata": true
+						"type":"date"
 					},
 					"updated_at":{
-						"type":"text",
-						"store": true,
-						"fielddata": true
+						"type":"date"
 					},
 					"created_at":{
-						"type":"text",
-						"store": true,
-						"fielddata": true
+						"type":"date"
 					}
 				}
 			}
