@@ -81,6 +81,7 @@ func (ctl *Controller) CheckEmail(c *gin.Context) {
 		superhero.City = resp.Superhero.City
 		superhero.SuperPower = resp.Superhero.SuperPower
 		superhero.AccountType = resp.Superhero.AccountType
+		superhero.CreatedAt = resp.Superhero.CreatedAt
 	}
 
 	fmt.Println()

@@ -21,4 +21,5 @@ type Superhero struct {
 	City                  string   `json:"city" struct:"city"`
 	SuperPower            string   `json:"superPower" struct:"superPower"`
 	AccountType           string   `json:"accountType" struct:"accountType"`
+	CreatedAt             string   `json:"createdAt"`
 }

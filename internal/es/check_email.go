@@ -61,8 +61,6 @@ func (es *ES) CheckEmailExists(email string) (rsp *model.CheckEmailResponse, err
 
 			result = model.CheckEmailResponse{
 				IsRegistered: isRegistered,
-				IsDeleted:    s.IsDeleted,
-				IsBlocked:    s.IsBlocked,
 				Superhero:    &s,
 			}
 		}

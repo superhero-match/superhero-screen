@@ -46,6 +46,9 @@ func(es *ES) CreateIndex() error {
 						"type":"keyword",
 						"store": true
 					},
+					"profile_pics":{
+						"type": "nested"
+					},
 					"gender":{
 						"type":"integer"
 					},
@@ -89,21 +92,6 @@ func(es *ES) CreateIndex() error {
 					"account_type":{
 						"type":"keyword",
 						"store": true
-					},
-					"is_deleted":{
-						"type":"boolean"
-					},
-					"deleted_at":{
-						"type":"date"
-					},
-					"is_blocked":{
-						"type":"boolean"
-					},
-					"blocked_at":{
-						"type":"date"
-					},
-					"updated_at":{
-						"type":"date"
 					},
 					"created_at":{
 						"type":"date"
