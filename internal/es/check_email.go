@@ -15,9 +15,6 @@ import (
 func (es *ES) CheckEmailExists(email string) (rsp *model.CheckEmailResponse, err error) {
 	var result model.CheckEmailResponse
 
-	fmt.Println(email)
-	fmt.Println(es.Index)
-
 	q := elastic.NewTermQuery("email", email)
 
 	fmt.Println()
