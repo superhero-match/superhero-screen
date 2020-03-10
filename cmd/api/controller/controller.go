@@ -16,8 +16,8 @@ package controller
 import (
 	"github.com/gin-gonic/gin"
 
-	"github.com/superhero-screen/internal/config"
-	"github.com/superhero-screen/internal/es"
+	"github.com/superhero-match/superhero-screen/internal/config"
+	"github.com/superhero-match/superhero-screen/internal/es"
 )
 
 const (
