@@ -18,7 +18,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/superhero-screen/internal/es/model"
+	"github.com/superhero-match/superhero-screen/internal/es/model"
 
 	"gopkg.in/olivere/elastic.v7"
 )

@@ -16,7 +16,7 @@ package controller
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/superhero-screen/cmd/api/model"
+	"github.com/superhero-match/superhero-screen/cmd/api/model"
 	"net/http"
 
 	"github.com/gin-gonic/gin"

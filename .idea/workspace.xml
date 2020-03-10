@@ -3,25 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="10d85a7a-ebeb-49ae-8c40-d4e004acc3ac" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/api/controller/check_email.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/api/controller/check_email.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/api/controller/controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/api/controller/controller.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/api/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/api/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/api/model/email_response.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/api/model/email_response.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/api/model/profile_picture.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/api/model/profile_picture.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/api/model/superhero.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/api/model/superhero.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/config/app.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/config/app.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/config/config.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/config/es.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/config/es.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/es/check_email.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/es/check_email.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/es/create_index.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/es/create_index.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/es/delete_index.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/es/delete_index.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/es/es.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/es/es.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/es/model/email_response.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/es/model/email_response.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/es/model/profile_picture.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/es/model/profile_picture.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/es/model/superhero.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/es/model/superhero.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/es/ping.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/es/ping.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +38,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />

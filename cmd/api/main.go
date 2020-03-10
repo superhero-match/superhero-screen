@@ -14,8 +14,8 @@
 package main
 
 import (
-	"github.com/superhero-screen/cmd/api/controller"
-	"github.com/superhero-screen/internal/config"
+	"github.com/superhero-match/superhero-screen/cmd/api/controller"
+	"github.com/superhero-match/superhero-screen/internal/config"
 )
 
 func main() {
