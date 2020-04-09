@@ -25,7 +25,7 @@ import (
 // CheckEmail checks if email already registered.
 // This check is done after the user has logged-in.
 // If email is registered, return status OK and true for registered.
-// If not, return status OK and false for registered, and user will be redirected to register screen.
+// If not, return status OK and false for registered, and user will be redirected to register service.
 func (ctl *Controller) CheckEmail(c *gin.Context) {
 	var isRegistered bool
 	var isDeleted bool
@@ -44,17 +44,17 @@ func (ctl *Controller) CheckEmail(c *gin.Context) {
 		return
 	}
 
-	//err := ctl.ES.DeleteIndex()
+	//err := ctl.Service.ES.DeleteIndex()
 	//if err != nil {
 	//	fmt.Println(err)
 	//}
 	//
-	//err = ctl.ES.CreateIndex()
+	//err = ctl.Service.ES.CreateIndex()
 	//if err != nil {
 	//	fmt.Println(err)
 	//}
 
-	resp, err := ctl.ES.CheckEmailExists(email)
+	resp, err := ctl.Service.ES.CheckEmailExists(email)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"status":       http.StatusInternalServerError,
