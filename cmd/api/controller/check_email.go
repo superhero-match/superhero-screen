@@ -48,8 +48,8 @@ func (ctl *Controller) CheckEmail(c *gin.Context) {
 	//if err != nil {
 	//	fmt.Println(err)
 	//}
-
-	//err := ctl.ES.CreateIndex()
+	//
+	//err = ctl.ES.CreateIndex()
 	//if err != nil {
 	//	fmt.Println(err)
 	//}

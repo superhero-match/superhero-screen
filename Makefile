@@ -1,11 +1,5 @@
 prepare:
-	go get -u github.com/golang/dep/cmd/dep
-	go get -u github.com/gin-gonic/gin
-	go get -u golang.org/x/sys/unix
-	go get -u github.com/jinzhu/configor
-	go get -u go.uber.org/zap
-	go get -u golang.org/x/net/context
-	go get -u gopkg.in/olivere/elastic.v7
+	go mod download
 
 run:
 	go build -o bin/main cmd/api/main.go
@@ -15,17 +9,11 @@ build:
 	CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags '-extldflags "-static"' -o bin/main cmd/api/main.go
 	chmod +x bin/main
 
-init:
-	dep init
-
-deps:
-	dep ensure -v
-
 dkb:
 	docker build -t superhero-screen .
 
 dkr:
-	docker run --rm -p "3200:3200" superhero-screen
+	docker run --rm -p "3200:3200" -p "8240:8240" superhero-screen
 
 launch: dkb dkr
 

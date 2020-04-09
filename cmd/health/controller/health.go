@@ -11,12 +11,14 @@
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package config
+package controller
 
-// ES holds the configuration values for the Elasticsearch client.
-type ES struct {
-	Host    string `env:"ES_HOST" default:"192.168.0.105"`
-	Port    string `env:"ES_PORT" default:"9200"`
-	Cluster string `env:"ES_CLUSTER" default:"superheromatch"`
-	Index   string `env:"ES_INDEX" default:"superhero"`
+import (
+	"github.com/gin-gonic/gin"
+	"net/http"
+)
+
+// Health is used for health checks from loadbalancer.
+func (ctl *Controller) Health(c *gin.Context) {
+	c.Status(http.StatusOK)
 }

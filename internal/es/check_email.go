@@ -20,7 +20,7 @@ import (
 
 	"github.com/superhero-match/superhero-screen/internal/es/model"
 
-	"gopkg.in/olivere/elastic.v7"
+	"github.com/olivere/elastic/v7"
 )
 
 // CheckEmailExists checks if document of type superhero in superheros index exists

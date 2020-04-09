@@ -11,12 +11,28 @@
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package config
+package main
 
-// ES holds the configuration values for the Elasticsearch client.
-type ES struct {
-	Host    string `env:"ES_HOST" default:"192.168.0.105"`
-	Port    string `env:"ES_PORT" default:"9200"`
-	Cluster string `env:"ES_CLUSTER" default:"superheromatch"`
-	Index   string `env:"ES_INDEX" default:"superhero"`
+import (
+	"github.com/superhero-match/superhero-screen/cmd/health/controller"
+	"github.com/superhero-match/superhero-screen/internal/config"
+)
+
+func main() {
+	cfg, err := config.NewConfig()
+	if err != nil {
+		panic(err)
+	}
+
+	ctrl, err := controller.NewController()
+	if err != nil {
+		panic(err)
+	}
+
+	r := ctrl.RegisterRoutes()
+
+	err = r.Run(cfg.Health.Port)
+	if err != nil {
+		panic(err)
+	}
 }

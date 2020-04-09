@@ -13,10 +13,9 @@
 */
 package config
 
-// ES holds the configuration values for the Elasticsearch client.
-type ES struct {
-	Host    string `env:"ES_HOST" default:"192.168.0.105"`
-	Port    string `env:"ES_PORT" default:"9200"`
-	Cluster string `env:"ES_CLUSTER" default:"superheromatch"`
-	Index   string `env:"ES_INDEX" default:"superhero"`
+// Health holds configuration for health server.
+type Health struct {
+	Port             string `env:"HEALTH_SERVER_PORT" default:":8240"`
+	ShutdownEndpoint string `env:"HEALTH_SERVER_SHUTDOWN_ENDPOINT" default:"/api/v1/superhero_screen_health/shutdown"`
+	ContentType      string `env:"HEALTH_SERVER_CONTENT_TYPE" default:"application/json"`
 }

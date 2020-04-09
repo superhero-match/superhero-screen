@@ -5,7 +5,12 @@ app:
   time_format: '2019-09-15T14:04:05'
 
 es:
-  host: 'localhost'
+  host: '192.168.0.105'
   port: '9200'
   cluster: 'superheromatch'
   index: 'superhero'
+
+health:
+  port: ':8240'
+  shutdown_endpoint: '/api/v1/superhero_screen_health/shutdown'
+  content_type: 'application/json'

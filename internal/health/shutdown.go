@@ -11,12 +11,19 @@
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package config
+package health
 
-// ES holds the configuration values for the Elasticsearch client.
-type ES struct {
-	Host    string `env:"ES_HOST" default:"192.168.0.105"`
-	Port    string `env:"ES_PORT" default:"9200"`
-	Cluster string `env:"ES_CLUSTER" default:"superheromatch"`
-	Index   string `env:"ES_INDEX" default:"superhero"`
+import (
+	"net/http"
+)
+
+// ShutdownHealthServer sends shutdown signal to health server. This shutdown signal is sent only when API server
+// is panicking and is about to be shutdown to notify loadbalancer that API is un-healthy.
+func (c *Client) ShutdownHealthServer () error {
+	_, err := http.Post(c.HealthServerURL, c.ContentType, nil)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }

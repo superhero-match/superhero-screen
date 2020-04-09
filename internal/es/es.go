@@ -18,7 +18,7 @@ import (
 
 	"github.com/superhero-match/superhero-screen/internal/config"
 
-	elastic "gopkg.in/olivere/elastic.v7"
+	elastic "github.com/olivere/elastic/v7"
 )
 
 // ES holds all the Elasticsearch client relevant data.

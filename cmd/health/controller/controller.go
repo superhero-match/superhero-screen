@@ -11,12 +11,30 @@
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package config
+package controller
 
-// ES holds the configuration values for the Elasticsearch client.
-type ES struct {
-	Host    string `env:"ES_HOST" default:"192.168.0.105"`
-	Port    string `env:"ES_PORT" default:"9200"`
-	Cluster string `env:"ES_CLUSTER" default:"superheromatch"`
-	Index   string `env:"ES_INDEX" default:"superhero"`
+import (
+	"github.com/gin-gonic/gin"
+)
+
+// Controller holds the Controller data.
+type Controller struct {
+}
+
+// NewController returns new controller.
+func NewController() (*Controller, error) {
+	return &Controller{}, nil
+}
+
+// RegisterRoutes registers all the superhero_suggestions API routes.
+func (ctl *Controller) RegisterRoutes() *gin.Engine {
+	router := gin.Default()
+
+	sr := router.Group("/api/v1/superhero_screen_health")
+
+	// Routes.
+	sr.POST("/health", ctl.Health)
+	sr.POST("/shutdown", ctl.Shutdown)
+
+	return router
 }
