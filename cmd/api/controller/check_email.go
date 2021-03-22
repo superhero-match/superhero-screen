@@ -44,15 +44,15 @@ func (ctl *Controller) CheckEmail(c *gin.Context) {
 		return
 	}
 
-	err := ctl.Service.ES.DeleteIndex()
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	err = ctl.Service.ES.CreateIndex()
-	if err != nil {
-		fmt.Println(err)
-	}
+	//err := ctl.Service.ES.DeleteIndex()
+	//if err != nil {
+	//	fmt.Println(err)
+	//}
+	//
+	//err = ctl.Service.ES.CreateIndex()
+	//if err != nil {
+	//	fmt.Println(err)
+	//}
 
 	resp, err := ctl.Service.ES.CheckEmailExists(email)
 	if err != nil {

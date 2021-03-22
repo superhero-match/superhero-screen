@@ -47,8 +47,6 @@ func (ctl *Controller) RegisterRoutes() *gin.Engine {
 
 	sr := router.Group("/api/v1/superhero_screen")
 
-	// sr.Use(c.Authorize)
-
 	sr.POST("/check_email", ctl.CheckEmail)
 
 	return router
