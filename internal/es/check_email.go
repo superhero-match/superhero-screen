@@ -1,5 +1,5 @@
 /*
-  Copyright (C) 2019 - 2021 MWSOFT
+  Copyright (C) 2019 - 2022 MWSOFT
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
@@ -18,14 +18,14 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/superhero-match/superhero-screen/internal/es/model"
+	elastic "github.com/olivere/elastic/v7"
 
-	"github.com/olivere/elastic/v7"
+	"github.com/superhero-match/superhero-screen/internal/es/model"
 )
 
 // CheckEmailExists checks if document of type superhero in superheros index exists
 // and if so, if the superhero is blocked.
-func (es *ES) CheckEmailExists(email string) (rsp *model.CheckEmailResponse, err error) {
+func (es *es) CheckEmailExists(email string) (rsp *model.CheckEmailResponse, err error) {
 	var result model.CheckEmailResponse
 
 	q := elastic.NewTermQuery("email", email)

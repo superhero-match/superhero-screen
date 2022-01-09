@@ -1,5 +1,5 @@
 /*
-  Copyright (C) 2019 - 2021 MWSOFT
+  Copyright (C) 2019 - 2022 MWSOFT
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
@@ -19,7 +19,7 @@ import (
 )
 
 // Ping the Elasticsearch server to make sure that ES is running.
-func(es *ES) Ping() error {
+func (es *es) Ping() error {
 	_, _, err := es.Client.Ping(fmt.Sprintf("http://%s:%s", es.Host, es.Port)).Do(context.Background())
 	if err != nil {
 		return err

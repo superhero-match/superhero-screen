@@ -1,5 +1,5 @@
 /*
-  Copyright (C) 2019 - 2021 MWSOFT
+  Copyright (C) 2019 - 2022 MWSOFT
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
@@ -14,36 +14,32 @@
 package service
 
 import (
-	"github.com/superhero-match/superhero-screen/internal/es"
-	"go.uber.org/zap"
-
 	"github.com/superhero-match/superhero-screen/internal/config"
+	"github.com/superhero-match/superhero-screen/internal/es"
+	"github.com/superhero-match/superhero-screen/internal/es/model"
 )
 
-// Service holds all the different services that are used when handling request.
-type Service struct {
-	ES         *es.ES
-	Logger     *zap.Logger
-	TimeFormat string
+// Service interface defines service methods.
+type Service interface {
+	CheckEmailExists(email string) (rsp *model.CheckEmailResponse, err error)
+	CreateIndex() error
+	DeleteIndex() error
+	Ping() error
+}
+
+// service holds all the different services that are used when handling request.
+type service struct {
+	ES es.ES
 }
 
 // NewService creates value of type Service.
-func NewService(cfg *config.Config) (*Service, error) {
+func NewService(cfg *config.Config) (Service, error) {
 	e, err := es.NewES(cfg)
 	if err != nil {
 		return nil, err
 	}
 
-	logger, err := zap.NewProduction()
-	if err != nil {
-		return nil, err
-	}
-
-	defer logger.Sync()
-
-	return &Service{
-		ES:         e,
-		Logger:     logger,
-		TimeFormat: cfg.App.TimeFormat,
+	return &service{
+		ES: e,
 	}, nil
 }

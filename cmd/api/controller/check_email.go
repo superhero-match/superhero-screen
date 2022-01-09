@@ -1,5 +1,5 @@
 /*
-  Copyright (C) 2019 - 2021 MWSOFT
+  Copyright (C) 2019 - 2022 MWSOFT
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
@@ -16,10 +16,11 @@ package controller
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/superhero-match/superhero-screen/cmd/api/model"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+
+	"github.com/superhero-match/superhero-screen/cmd/api/model"
 )
 
 // CheckEmail checks if email already registered.
@@ -44,17 +45,17 @@ func (ctl *Controller) CheckEmail(c *gin.Context) {
 		return
 	}
 
-	//err := ctl.Service.ES.DeleteIndex()
+	//err := ctl.Service.DeleteIndex()
 	//if err != nil {
 	//	fmt.Println(err)
 	//}
 	//
-	//err = ctl.Service.ES.CreateIndex()
+	//err = ctl.Service.CreateIndex()
 	//if err != nil {
 	//	fmt.Println(err)
 	//}
 
-	resp, err := ctl.Service.ES.CheckEmailExists(email)
+	resp, err := ctl.Service.CheckEmailExists(email)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"status":       http.StatusInternalServerError,

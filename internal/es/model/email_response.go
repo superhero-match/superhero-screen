@@ -1,5 +1,5 @@
 /*
-  Copyright (C) 2019 - 2021 MWSOFT
+  Copyright (C) 2019 - 2022 MWSOFT
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
@@ -15,8 +15,8 @@ package model
 
 // CheckEmailResponse holds the response data to the check if email exists request.
 type CheckEmailResponse struct {
-	IsRegistered bool      `json:"isRegistered"`
-	IsDeleted    bool      `json:"isDeleted"`
-	IsBlocked    bool      `json:"isBlocked"`
+	IsRegistered bool       `json:"isRegistered"`
+	IsDeleted    bool       `json:"isDeleted"`
+	IsBlocked    bool       `json:"isBlocked"`
 	Superhero    *Superhero `json:"superhero"`
 }
