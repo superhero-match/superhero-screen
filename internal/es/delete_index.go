@@ -11,11 +11,11 @@
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+
 package es
 
 import (
 	"context"
-	"fmt"
 )
 
 // DeleteIndex deletes the whole index.
@@ -24,14 +24,10 @@ import (
 // !!! DO NOT CALL THIS METHOD THIS IS ONLY FOR LOCAL DEVELOPMENT PURPOSES !!!
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 func (es *es) DeleteIndex() error {
-	deleteIndex, err := es.Client.DeleteIndex(es.Index).Do(context.Background())
+	_, err := es.Client.DeleteIndex(es.Index).Do(context.Background())
 	if err != nil {
-		fmt.Println("deleteIndex")
-		fmt.Println(err)
 		return err
 	}
-
-	fmt.Printf("%+v", deleteIndex)
 
 	return nil
 }

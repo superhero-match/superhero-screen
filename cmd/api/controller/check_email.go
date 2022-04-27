@@ -11,11 +11,10 @@
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+
 package controller
 
 import (
-	"encoding/json"
-	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -45,16 +44,6 @@ func (ctl *Controller) CheckEmail(c *gin.Context) {
 		return
 	}
 
-	//err := ctl.Service.DeleteIndex()
-	//if err != nil {
-	//	fmt.Println(err)
-	//}
-	//
-	//err = ctl.Service.CreateIndex()
-	//if err != nil {
-	//	fmt.Println(err)
-	//}
-
 	resp, err := ctl.Service.CheckEmailExists(email)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
@@ -67,10 +56,6 @@ func (ctl *Controller) CheckEmail(c *gin.Context) {
 
 		return
 	}
-
-	fmt.Println()
-	fmt.Printf("resp: %+v", resp)
-	fmt.Println()
 
 	var superhero model.Superhero
 
@@ -97,29 +82,6 @@ func (ctl *Controller) CheckEmail(c *gin.Context) {
 		superhero.AccountType = resp.Superhero.AccountType
 		superhero.CreatedAt = resp.Superhero.CreatedAt
 	}
-
-	fmt.Println()
-	fmt.Printf("Superhero Before Marshalling: %+v", superhero)
-	fmt.Println()
-
-	res, err := json.Marshal(superhero)
-	if err != nil {
-		fmt.Println("json.Marshal")
-		fmt.Println(err)
-		c.JSON(http.StatusInternalServerError, gin.H{
-			"status":       http.StatusInternalServerError,
-			"isRegistered": isRegistered,
-			"isDeleted":    isDeleted,
-			"isBlocked":    isBlocked,
-			"superhero":    nil,
-		})
-
-		return
-	}
-
-	fmt.Println()
-	fmt.Printf("Superhero After Marshalling: %s", string(res))
-	fmt.Println()
 
 	c.JSON(http.StatusOK, gin.H{
 		"status":       http.StatusOK,

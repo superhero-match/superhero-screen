@@ -11,19 +11,31 @@
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+
 package es
 
 import (
-	"context"
-	"fmt"
+	"net/http"
+	"net/http/httptest"
+	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
-// Ping the Elasticsearch server to make sure that ES is running.
-func (es *es) Ping() error {
-	_, _, err := es.Client.Ping(fmt.Sprintf("http://%s:%s", es.Host, es.Port)).Do(context.Background())
-	if err != nil {
-		return err
+func TestEs_DeleteIndex(t *testing.T) {
+	testServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {}))
+	defer testServer.Close()
+
+	response := `{"status": 200}`
+
+	mockClient, err := MockElasticSearchClient(testServer.URL, response)
+	assert.NoError(t, err)
+
+	mockEs := &es{
+		Client: mockClient,
+		Index:  "superhero",
 	}
 
-	return nil
+	err = mockEs.DeleteIndex()
+	assert.NoError(t, err)
 }

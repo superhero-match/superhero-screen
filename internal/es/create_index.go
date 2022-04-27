@@ -11,6 +11,7 @@
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+
 package es
 
 import (
@@ -30,8 +31,12 @@ func (es *es) CreateIndex() error {
 		return err
 	}
 
-	if !exists {
-		mapping := `
+	if exists {
+		fmt.Println("index already exists")
+		return nil
+	}
+
+	mapping := `
 		{
 			"settings":{
 				"number_of_shards":1,
@@ -114,19 +119,14 @@ func (es *es) CreateIndex() error {
 		}
 		`
 
-		createIndex, err := es.Client.CreateIndex(es.Index).Body(mapping).Do(context.Background())
-		if err != nil {
-			return err
-		}
-
-		if !createIndex.Acknowledged {
-			fmt.Println("create index is not acknowledged")
-		}
-
-		return nil
+	createIndex, err := es.Client.CreateIndex(es.Index).Body(mapping).Do(context.Background())
+	if err != nil {
+		return err
 	}
 
-	fmt.Println("index already exists")
+	if !createIndex.Acknowledged {
+		fmt.Println("create index is not acknowledged")
+	}
 
 	return nil
 }

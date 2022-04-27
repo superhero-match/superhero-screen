@@ -14,8 +14,15 @@
 package main
 
 import (
+	"fmt"
+
+	"github.com/olivere/elastic/v7"
+	"go.uber.org/zap"
+
 	"github.com/superhero-match/superhero-screen/cmd/api/controller"
+	"github.com/superhero-match/superhero-screen/cmd/api/service"
 	"github.com/superhero-match/superhero-screen/internal/config"
+	"github.com/superhero-match/superhero-screen/internal/es"
 )
 
 func main() {
@@ -24,11 +31,33 @@ func main() {
 		panic(err)
 	}
 
-	ctrl, err := controller.NewController(cfg)
+	esClient, err := elastic.NewClient(
+		elastic.SetURL(
+			fmt.Sprintf(
+				"http://%s:%s",
+				cfg.ES.Host,
+				cfg.ES.Port,
+			),
+		),
+	)
 	if err != nil {
 		panic(err)
 	}
 
+	e := es.New(esClient, cfg.ES.Index)
+
+	srv := service.New(e)
+
+	logger, err := zap.NewProduction()
+	if err != nil {
+		panic(err)
+	}
+	defer logger.Sync()
+
+	ctrl := controller.New(srv, logger, cfg.App.TimeFormat)
+	if err != nil {
+		panic(err)
+	}
 	r := ctrl.RegisterRoutes()
 
 	err = r.Run(cfg.App.Port)

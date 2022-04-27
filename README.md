@@ -2,10 +2,21 @@
 Superhero Match is an open source dating app.
 
 ## superhero-screen
-This micro-service is responsible for checking if user is already registered/blocked/... 
+This micro-service is responsible for checking if user is already registered.
+
+## Tech Stack
+This micro-service is written in `Go` so you will need the latest version of `Go` installed on your local machine.
+
+To run this micro-service locally you will need the following technologies
+installed on your local machine, or you will need to point to a working instance of the service:
+- `Elasticsearch`
+
+## Unit Tests
+To run unit tests run `make tests` command. It will run all the unit tests and will display coverage.
 
 ## Becoming Contributor
-If you want to become contributor, please send email to this address - `info@superhero-match.com`.
+If you want to contribute, just open a PR or if it is a bigger change then open an issue first.
+
 
 ## License
 Copyright 2019-2021 MWSOFT

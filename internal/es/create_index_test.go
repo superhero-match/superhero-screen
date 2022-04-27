@@ -12,28 +12,30 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package service
+package es
 
 import (
-	"github.com/superhero-match/superhero-screen/internal/es"
-	"github.com/superhero-match/superhero-screen/internal/es/model"
+	"net/http"
+	"net/http/httptest"
+	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
-// Service interface defines service methods.
-type Service interface {
-	CheckEmailExists(email string) (rsp *model.CheckEmailResponse, err error)
-	CreateIndex() error
-	DeleteIndex() error
-}
+func TestEs_CreateIndex(t *testing.T) {
+	testServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {}))
+	defer testServer.Close()
 
-// service holds all the different services that are used when handling request.
-type service struct {
-	ES es.ES
-}
+	response := `{"status": 200}`
 
-// New creates value of type Service.
-func New(e es.ES) Service {
-	return &service{
-		ES: e,
+	mockClient, err := MockElasticSearchClient(testServer.URL, response)
+	assert.NoError(t, err)
+
+	mockEs := &es{
+		Client: mockClient,
+		Index:  "superhero",
 	}
+
+	err = mockEs.CreateIndex()
+	assert.NoError(t, err)
 }

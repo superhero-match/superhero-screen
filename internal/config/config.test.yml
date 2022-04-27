@@ -1,0 +1,9 @@
+app:
+  port: ':3200'
+  time_format: '2006-01-02T15:04:05'
+
+es:
+  host: 'localhost'
+  port: '9200'
+  cluster: 'superheromatch'
+  index: 'superhero'

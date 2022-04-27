@@ -11,6 +11,7 @@
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+
 package service
 
 import (
@@ -37,9 +38,4 @@ func (srv *service) CreateIndex() error {
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 func (srv *service) DeleteIndex() error {
 	return srv.ES.DeleteIndex()
-}
-
-// Ping the Elasticsearch server to make sure that ES is running.
-func (srv *service) Ping() error {
-	return srv.ES.Ping()
 }

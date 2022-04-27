@@ -11,13 +11,12 @@
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+
 package es
 
 import (
 	"context"
 	"encoding/json"
-	"fmt"
-
 	elastic "github.com/olivere/elastic/v7"
 
 	"github.com/superhero-match/superhero-screen/internal/es/model"
@@ -30,10 +29,6 @@ func (es *es) CheckEmailExists(email string) (rsp *model.CheckEmailResponse, err
 
 	q := elastic.NewTermQuery("email", email)
 
-	fmt.Println()
-	fmt.Printf("%+v", q)
-	fmt.Println()
-
 	searchResult, err := es.Client.Search().
 		Index(es.Index).
 		Query(q).
@@ -43,25 +38,14 @@ func (es *es) CheckEmailExists(email string) (rsp *model.CheckEmailResponse, err
 		return nil, err
 	}
 
-	fmt.Printf("SearchResult: %+v", searchResult)
-
-	fmt.Println()
-
-	fmt.Println(searchResult.TotalHits())
-
 	if searchResult.TotalHits() > 0 {
 		for _, hit := range searchResult.Hits.Hits {
-			fmt.Printf("Hit: %+v", hit)
 			var s model.Superhero
 
 			err := json.Unmarshal(hit.Source, &s)
 			if err != nil {
 				return nil, err
 			}
-
-			fmt.Println()
-			fmt.Printf("Superhero Unmarshalled: %+v", &s)
-			fmt.Println()
 
 			isRegistered := false
 

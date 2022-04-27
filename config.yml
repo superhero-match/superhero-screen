@@ -3,7 +3,7 @@ app:
   time_format: '2006-01-02T15:04:05'
 
 es:
-  host: '192.168.1.229'
+  host: 'localhost'
   port: '9200'
   cluster: 'superheromatch'
   index: 'superhero'

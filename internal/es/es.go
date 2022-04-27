@@ -11,14 +11,12 @@
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+
 package es
 
 import (
-	"fmt"
-
 	elastic "github.com/olivere/elastic/v7"
 
-	"github.com/superhero-match/superhero-screen/internal/config"
 	"github.com/superhero-match/superhero-screen/internal/es/model"
 )
 
@@ -27,38 +25,18 @@ type ES interface {
 	CheckEmailExists(email string) (rsp *model.CheckEmailResponse, err error)
 	CreateIndex() error
 	DeleteIndex() error
-	Ping() error
 }
 
 // es holds all the Elasticsearch client relevant data.
 type es struct {
-	Client  *elastic.Client
-	Host    string
-	Port    string
-	Cluster string
-	Index   string
+	Client *elastic.Client
+	Index  string
 }
 
-// NewES creates a client and connects to it.
-func NewES(cfg *config.Config) (e ES, err error) {
-	client, err := elastic.NewClient(
-		elastic.SetURL(
-			fmt.Sprintf(
-				"http://%s:%s",
-				cfg.ES.Host,
-				cfg.ES.Port,
-			),
-		),
-	)
-	if err != nil {
-		return nil, err
-	}
-
+// New creates a client connection to Elasticsearch.
+func New(ecl *elastic.Client, index string) ES {
 	return &es{
-		Client:  client,
-		Host:    cfg.ES.Host,
-		Port:    cfg.ES.Port,
-		Cluster: cfg.ES.Cluster,
-		Index:   cfg.ES.Index,
-	}, nil
+		Client: ecl,
+		Index:  index,
+	}
 }
